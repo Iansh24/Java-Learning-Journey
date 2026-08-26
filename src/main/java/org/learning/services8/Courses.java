@@ -1,10 +1,6 @@
-package org.learning.services;
+package org.learning.services8;
 
-import org.learning.services.ICourses;
-import org.learning.services.Java;
-import org.learning.services.SpringBoot;
-
-    public class Courses {
+public class Courses {
 
         private ICourses course;
 

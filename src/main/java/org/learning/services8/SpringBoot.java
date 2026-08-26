@@ -1,4 +1,4 @@
-package org.learning.services;
+package org.learning.services8;
 
 public class SpringBoot implements ICourses{
     public Boolean getTheCourse(Double amount){

@@ -1,4 +1,4 @@
-package org.learning;
+package org.learning.lambda8;
 
 class A {
     public void show(){

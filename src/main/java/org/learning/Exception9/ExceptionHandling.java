@@ -1,6 +1,5 @@
-package org.learning;
+package org.learning.Exception9;
 
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class ExceptionHandling {
