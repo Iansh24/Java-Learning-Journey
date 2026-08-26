@@ -1,4 +1,4 @@
-package org.learning.EnumAnnotation;
+package org.learning.EnumAnnotation14;
 
 enum Result{
     PASS, FAIL; // these are static and final

@@ -1,4 +1,4 @@
-package org.learning.services8;
+package org.learning.Interface8;
 
 public class Courses {
 

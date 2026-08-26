@@ -1,33 +1,34 @@
 import os
 
-BASE_PATH = "src/main/java/org/learning"
+# --------------------------------------------------
+# Configuration
+# --------------------------------------------------
 
-topics = []
+BASE_DIR = "src/main/java/org/learning"
+README_FILE = "README.md"
 
-if os.path.exists(BASE_PATH):
+# Add your Java topics here.
+# Change "In Progress" to "Completed" when you finish a topic.
+topics = [
+    {"name": "EnumAnnotation", "status": "Completed"},
+    {"name": "Exception9", "status": "Completed"},
+    {"name": "lambda8", "status": "Completed"},
+    {"name": "services8", "status": "Completed"},
+    {"name": "Multithreading", "status": "In Progress"}
+]
 
-    for folder in sorted(os.listdir(BASE_PATH)):
+# --------------------------------------------------
+# Sort topics
+# --------------------------------------------------
 
-        folder_path = os.path.join(BASE_PATH, folder)
+# Completed topics first.
+# In Progress topics automatically move to the bottom.
+topics.sort(key=lambda topic: topic["status"] == "In Progress")
 
-        if not os.path.isdir(folder_path):
-            continue
 
-        java_files = []
-
-        for root, dirs, files in os.walk(folder_path):
-            for file in files:
-                if file.endswith(".java"):
-                    java_files.append(os.path.join(root, file))
-
-        file_count = len(java_files)
-
-        topics.append({
-            "name": folder,
-            "path": folder_path.replace("\\", "/"),
-            "files": file_count
-        })
-
+# --------------------------------------------------
+# Generate README
+# --------------------------------------------------
 
 readme = """# Java Learning Journey
 
@@ -37,17 +38,45 @@ practice programs and detailed comments for revision.
 ## 📚 Java Topics
 
 | Topic | Files | Status |
-|---|---:|---|
+|-------|------:|--------|
 """
+
+
+# --------------------------------------------------
+# Generate topic table
+# --------------------------------------------------
 
 for topic in topics:
 
-    name = topic["name"]
-    path = topic["path"]
-    files = topic["files"]
+    folder_path = os.path.join(BASE_DIR, topic["name"])
 
-    readme += f"| [{name}]({path}) | {files} | 🚧 Learning |\\n"
+    # Count .java files
+    file_count = 0
 
+    if os.path.exists(folder_path):
+        for file in os.listdir(folder_path):
+            if file.endswith(".java"):
+                file_count += 1
+
+    # Status
+    if topic["status"] == "Completed":
+        status = "✅ Completed"
+    else:
+        status = "🚧 In Progress"
+
+    # GitHub folder link
+    github_path = folder_path.replace(os.sep, "/")
+
+    readme += (
+        f"| [{topic['name']}]({github_path}) "
+        f"| {file_count} "
+        f"| {status} |\n"
+    )
+
+
+# --------------------------------------------------
+# Learning Journey
+# --------------------------------------------------
 
 readme += """
 ## 🎯 Learning Journey
@@ -59,8 +88,12 @@ This repository is continuously updated as I learn new Java concepts.
 """
 
 for topic in topics:
-    readme += f"- {topic['name']}\\n"
+    readme += f"- {topic['name']}\n"
 
+
+# --------------------------------------------------
+# Notes
+# --------------------------------------------------
 
 readme += """
 ## 📝 Notes
@@ -74,7 +107,11 @@ to make them useful as personal revision notes.
 """
 
 
-with open("README.md", "w", encoding="utf-8") as file:
+# --------------------------------------------------
+# Write README
+# --------------------------------------------------
+
+with open(README_FILE, "w", encoding="utf-8") as file:
     file.write(readme)
 
 print("README updated successfully!")

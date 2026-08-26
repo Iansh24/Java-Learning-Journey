@@ -1,4 +1,4 @@
-package org.learning.EnumAnnotation;
+package org.learning.EnumAnnotation14;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

@@ -1,4 +1,4 @@
-package org.learning.EnumAnnotation;
+package org.learning.EnumAnnotation14;
 
 class Animal {
     public void animalUsuallyHuntsAndEat() {
