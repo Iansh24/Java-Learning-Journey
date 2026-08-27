@@ -10,21 +10,20 @@ README_FILE = "README.md"
 # Add your Java topics here.
 # Change "In Progress" to "Completed" when you finish a topic.
 topics = [
-    {"name": "EnumAnnotation", "status": "Completed"},
-    {"name": "Exception9", "status": "Completed"},
-    {"name": "lambda8", "status": "Completed"},
-    {"name": "services8", "status": "Completed"},
-    {"name": "Multithreading", "status": "In Progress"}
+    {"name": "2)Interface", "status": "Completed"},
+    {"name": "1)lambda", "status": "Completed"},
+    {"name": "3)Exception", "status": "Completed"},
+    {"name": "4)EnumAnnotation", "status": "Completed"},
+    {"name": "5)Multithreading", "status": "Completed"},
+    {"name": "6)StreamApi", "status": "In Progress"}
 ]
 
-# --------------------------------------------------
-# Sort topics
-# --------------------------------------------------
+# Separate completed and in-progress topics.
+completed_topics = [topic for topic in topics if topic["status"] == "Completed"]
+in_progress_topics = [topic for topic in topics if topic["status"] == "In Progress"]
 
-# Completed topics first.
-# In Progress topics automatically move to the bottom.
-topics.sort(key=lambda topic: topic["status"] == "In Progress")
-
+# In-progress topics will always appear at the bottom.
+ordered_topics = completed_topics + in_progress_topics
 
 # --------------------------------------------------
 # Generate README

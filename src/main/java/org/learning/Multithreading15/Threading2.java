@@ -1,4 +1,4 @@
-package org.learning.Multithreading;
+package org.learning.Multithreading15;
 
 ///////////////////////**********States of a Thread********///////////////////////
 /* Everytime we create a thread it goes through certain states

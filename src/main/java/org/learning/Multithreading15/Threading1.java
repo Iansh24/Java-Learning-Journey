@@ -1,4 +1,4 @@
-package org.learning.Multithreading;
+package org.learning.Multithreading15;
 
 import java.util.Scanner;
 //multithreading  == concurrent execution
@@ -327,6 +327,8 @@ public class Threading1 {
 */
         /////////////////////////***RUNNABLE4.0***///////////////////////////
         //behaviour is not good so we will use synchronized
+        //Runnable r = () -> System.out.println("Hello World");
+        //Thread t = new Thread(() -> System.out.println("Hello World"));
         MyCar car = new MyCar();
         Thread t1 = new Thread(car);
         Thread t2 = new Thread(car);
