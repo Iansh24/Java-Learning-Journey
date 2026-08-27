@@ -8,22 +8,44 @@ BASE_DIR = "src/main/java/org/learning"
 README_FILE = "README.md"
 
 # Add your Java topics here.
-# Change "In Progress" to "Completed" when you finish a topic.
+#
+# number  -> order in the learning journey
+# name    -> actual folder name
+# status  -> Completed / In Progress
+#
+# When you finish a topic:
+# "In Progress" -> "Completed"
+#
+# Then add the next topic as "In Progress".
+
 topics = [
-    {"name": "2)Interface", "status": "Completed"},
-    {"name": "1)lambda", "status": "Completed"},
-    {"name": "3)Exception", "status": "Completed"},
-    {"name": "4)EnumAnnotation", "status": "Completed"},
-    {"name": "5)Multithreading", "status": "Completed"},
-    {"name": "6)StreamApi", "status": "In Progress"}
+    {"number": 1, "name": "lambda",          "status": "Completed"},
+    {"number": 2, "name": "Interface",       "status": "Completed"},
+    {"number": 3, "name": "Exception",       "status": "Completed"},
+    {"number": 4, "name": "EnumAnnotation",  "status": "Completed"},
+    {"number": 5, "name": "Multithreading",  "status": "Completed"},
+    {"number": 6, "name": "StreamApi",       "status": "In Progress"}
 ]
 
-# Separate completed and in-progress topics.
-completed_topics = [topic for topic in topics if topic["status"] == "Completed"]
-in_progress_topics = [topic for topic in topics if topic["status"] == "In Progress"]
 
-# In-progress topics will always appear at the bottom.
+# --------------------------------------------------
+# Separate Completed and In-Progress Topics
+# --------------------------------------------------
+
+completed_topics = [
+    topic for topic in topics
+    if topic["status"] == "Completed"
+]
+
+in_progress_topics = [
+    topic for topic in topics
+    if topic["status"] == "In Progress"
+]
+
+
+# In-progress topics always appear at the bottom
 ordered_topics = completed_topics + in_progress_topics
+
 
 # --------------------------------------------------
 # Generate README
@@ -42,10 +64,10 @@ practice programs and detailed comments for revision.
 
 
 # --------------------------------------------------
-# Generate topic table
+# Generate Topic Table
 # --------------------------------------------------
 
-for topic in topics:
+for topic in ordered_topics:
 
     folder_path = os.path.join(BASE_DIR, topic["name"])
 
@@ -53,9 +75,14 @@ for topic in topics:
     file_count = 0
 
     if os.path.exists(folder_path):
-        for file in os.listdir(folder_path):
-            if file.endswith(".java"):
-                file_count += 1
+
+        for root, dirs, files in os.walk(folder_path):
+
+            for file in files:
+
+                if file.endswith(".java"):
+                    file_count += 1
+
 
     # Status
     if topic["status"] == "Completed":
@@ -63,11 +90,17 @@ for topic in topics:
     else:
         status = "🚧 In Progress"
 
+
     # GitHub folder link
     github_path = folder_path.replace(os.sep, "/")
 
+
+    # Display number separately from folder name
+    display_name = f"{topic['number']}) {topic['name']}"
+
+
     readme += (
-        f"| [{topic['name']}]({github_path}) "
+        f"| [{display_name}]({github_path}) "
         f"| {file_count} "
         f"| {status} |\n"
     )
@@ -86,8 +119,12 @@ This repository is continuously updated as I learn new Java concepts.
 
 """
 
-for topic in topics:
-    readme += f"- {topic['name']}\n"
+
+for topic in ordered_topics:
+
+    display_name = f"{topic['number']}) {topic['name']}"
+
+    readme += f"- {display_name}\n"
 
 
 # --------------------------------------------------
@@ -111,6 +148,8 @@ to make them useful as personal revision notes.
 # --------------------------------------------------
 
 with open(README_FILE, "w", encoding="utf-8") as file:
+
     file.write(readme)
+
 
 print("README updated successfully!")
