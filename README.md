@@ -12,7 +12,8 @@ practice programs and detailed comments for revision.
 | [3) Exception](src/main/java/org/learning/Exception) | 0 | ✅ Completed |
 | [4) EnumAnnotation](src/main/java/org/learning/EnumAnnotation) | 0 | ✅ Completed |
 | [5) Multithreading](src/main/java/org/learning/Multithreading) | 0 | ✅ Completed |
-| [6) StreamApi](src/main/java/org/learning/StreamApi) | 0 | 🚧 In Progress |
+| [6) StreamApi](src/main/java/org/learning/StreamApi) | 0 | ✅ Completed |
+| [6) 7)Servlet](src/main/java/org/learning/7)Servlet) | 0 | 🚧 In Progress |
 
 ## 🎯 Learning Journey
 
@@ -26,6 +27,7 @@ This repository is continuously updated as I learn new Java concepts.
 - 4) EnumAnnotation
 - 5) Multithreading
 - 6) StreamApi
+- 6) 7)Servlet
 
 ## 📝 Notes
 

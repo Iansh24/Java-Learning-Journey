@@ -24,7 +24,8 @@ topics = [
     {"number": 3, "name": "Exception",       "status": "Completed"},
     {"number": 4, "name": "EnumAnnotation",  "status": "Completed"},
     {"number": 5, "name": "Multithreading",  "status": "Completed"},
-    {"number": 6, "name": "StreamApi",       "status": "In Progress"}
+    {"number": 6, "name": "StreamApi",       "status": "Completed"},
+    {"number": 6, "name": "7)Servlet",       "status": "In Progress"}
 ]
 
 
